@@ -1,4 +1,4 @@
-
+import dj_database_url
 import os
 from pathlib import Path
 
@@ -125,6 +125,9 @@ DATABASES = {
         'PASSWORD': 'asd123'
     }
 }
+
+DATABASES["default"] = dj_database_url.parse("postgres://news_blog2_user:l8iVBpNTSUAlJX6AQNbF4o6XSrYWkcHU@dpg-ck8pl1vq54js73d36f6g-a.oregon-postgres.render.com/news_blog2")
+
 
 
 # Password validation
