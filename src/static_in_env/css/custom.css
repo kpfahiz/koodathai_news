@@ -1,0 +1,21 @@
+/* your styles go here */
+
+.wp
+    {
+        width: 25px;
+        margin-top: 5px;
+
+    }
+.fa-whatsapp
+    {
+        /* font-family: "blog" !important; */
+        font-style: normal !important;
+        font-weight: normal !important;
+        font-variant: normal !important;
+        text-transform: none !important;
+        speak: none;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        margin-left: 10px;
+    }
