@@ -128,7 +128,7 @@ DATABASES = {
 
 DATABASES["default"] = dj_database_url.parse("postgres://news_blog2_user:l8iVBpNTSUAlJX6AQNbF4o6XSrYWkcHU@dpg-ck8pl1vq54js73d36f6g-a.oregon-postgres.render.com/news_blog2")
 
-
+SKLEARN_ALLOW_DEPRECATED_SKLEARN_PACKAGE_INSTALL=True
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
