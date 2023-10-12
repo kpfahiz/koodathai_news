@@ -14,9 +14,9 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 #SECRET_KEY = '0#@yo_%tu!7rws4wixepzy@e&uc*z!+(1z82@_auy)x0+9ppz3'
 #SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
-#DEBUG = False
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS")
-#ALLOWED_HOSTS=['*']
+#DEBUG = True
+#ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS")
+ALLOWED_HOSTS=['*']
 
 # Application definition
 
@@ -173,13 +173,13 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 VENV_PATH = os.path.dirname(BASE_DIR)
-if DEBUG:
-    STATICFILES_DIRS = [os.path.join(BASE_DIR,'static_in_env')]
-else:
-    STATIC_ROOT = os.path.join(VENV_PATH,'static_root')
+# if DEBUG:
+#     STATICFILES_DIRS = [os.path.join(BASE_DIR,'static_in_env')]
+# else:
+#     STATIC_ROOT = os.path.join(VENV_PATH,'static_root')
 
-
-
+STATICFILES_DIRS = [os.path.join(BASE_DIR,'static_in_env')]
+STATIC_ROOT = os.path.join(VENV_PATH,'static_root')
 MEDIA_ROOT = os.path.join(VENV_PATH,'media_root')
 #STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'

@@ -21,8 +21,8 @@
                       {% endfor %}
                     </div>
                   </div><a href="{{ post.get_absalute_url }}">
-                    <h3 class="h4">{{ post.title }}</h3></a>
-                  <p class="text-muted">{{ post.overview | safe}}</p>
+                    <h3 class="h5">{{ post.title }}</h3></a>
+                  <p class="text-muted">{{ post.overview | truncatechars:100 | safe}}</p>
                   <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
                       <div class="avatar"><img src="{{ post.author.profile_img.url }}" alt="..." class="img-fluid"></div>
                       <div class="title"><span>{{ post.author.user }}</span></div></a>
@@ -47,7 +47,7 @@
             </nav>
           </div>
         </main>
-       {% include 'sidebar.html' with most_recent=most_recent category_count=category_count %}
+        {% include 'sidebar.html' with most_recent=most_recent category_count=category_count %}
       </div>
     </div>
   {% endblock content %}
