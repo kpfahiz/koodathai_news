@@ -128,7 +128,7 @@
                 </div>
               </div><a href="{{ obj.get_absalute_url }}">
                 <h3 class="h4">{{ obj.title }}</h3></a>
-              <p class="text-muted">{{ obj.overview  | safe  }}</p>
+              <p class="text-muted">{{ obj.overview | truncatechars:150 | safe  }}</p>
             </div>
           </div>
          {% endfor %}
