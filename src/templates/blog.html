@@ -15,6 +15,7 @@
                 <div class="post-details">
                   <div class="post-meta d-flex justify-content-between">
                     <div class="date meta-last">{{post.timestamp }}</div>
+                    <div class="whtap">{% load social_share %}{%  post_to_whatsapp obj.get_absalute_url "<i class='fa fa-whatsapp'></i>" %} </div>
                     <div class="category">
                       {% for cat in post.categories.all %}
                       <a href="#">{{ cat }}</a>

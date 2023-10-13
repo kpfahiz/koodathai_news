@@ -46,6 +46,7 @@
                   <div class="title"><span>{{ obj.author.user }}</span></div></a>
                 <div class="date"><i class="icon-clock"></i> {{obj.timestamp |timesince}}</div>
                 <div class="comments meta-last"><i class="icon-comment"></i>{{ obj.comment_count }}</div>
+                <div class="whtap">{% load social_share %}{%  post_to_whatsapp obj.get_absalute_url "<i class='fa fa-whatsapp'></i>" %} </div>
               </footer>
             </div>
           </div>
@@ -121,6 +122,7 @@
             <div class="post-details">
               <div class="post-meta d-flex justify-content-between">
                 <div class="date">{{ obj.timestamp }}</div>
+                <div class="whtap">{% load social_share %}{%  post_to_whatsapp obj.get_absalute_url "<i class='fa fa-whatsapp'></i>" %} </div>
                 <div class="category">
                   {% for cat in obj.categories.all %}
                   <a href="#">{{ cat }}</a>
@@ -128,7 +130,7 @@
                 </div>
               </div><a href="{{ obj.get_absalute_url }}">
                 <h3 class="h4">{{ obj.title }}</h3></a>
-              <p class="text-muted">{{ obj.overview | truncatechars:150 | safe  }}</p>
+                <p class="text-muted">{{ obj.overview | truncatechars:150  | safe  }}</p>
             </div>
           </div>
          {% endfor %}

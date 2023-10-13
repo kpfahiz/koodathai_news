@@ -15,8 +15,10 @@
                 <a href="#">{{ cat }}</a>
               </div>
               {% endfor %}
+              {% if post.author.user == request.user %}
               <a href="{% url 'post_update' id=post.id%}">Update</a>
               <a href="{% url 'post_delete' id=post.id%}">Delete</a>
+              {% endif %}
             </div>
           </div>
        
@@ -30,6 +32,7 @@
               <div class="date"><i class="icon-clock"></i>{{ post.timestamp|timesince }} ago</div>
               <div class="views"><i class="icon-eye"></i> {{ post.view_count }}</div>
               <div class="comments meta-last"><i class="icon-comment"></i>{{ post.comment_count }}</div>
+              <div class="whtap">{% load social_share %}{%  post_to_whatsapp obj.get_absalute_url "<i class='fa fa-whatsapp'></i>" %} </div>
             </div>
           </div>
           <div class="post-body">
