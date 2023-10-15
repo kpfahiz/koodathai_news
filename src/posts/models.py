@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.urls import reverse
+from cloudinary.models import CloudinaryField
 #from tinymce import HTMLField
 from tinymce import models as tinymce_models
 
@@ -32,7 +33,7 @@ class Comment(models.Model):
 class Author(models.Model):
     id = models.AutoField(primary_key=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    profile_img = models.ImageField()
+    profile_img = CloudinaryField('image')
 
     def __str__(self):
         return self.user.username
@@ -56,7 +57,7 @@ class Post(models.Model):
     #comment_count = models.IntegerField(default=0)
     #view_count = models.IntegerField(default=0)
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
-    thumbnail = models.ImageField()
+    thumbnail = CloudinaryField('image')
     categories = models.ManyToManyField(Category)
     featured = models.BooleanField()
     previous_post = models.ForeignKey('self',related_name='previous',on_delete=models.SET_NULL,blank=True,null=True)

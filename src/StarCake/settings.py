@@ -1,7 +1,9 @@
 import dj_database_url
 import os
 from pathlib import Path
-
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -11,17 +13,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 #SECRET_KEY = os.environ.get("SECRET_KEY")
-SECRET_KEY = '0#@yo_%tu!7rws4wixepzy@e&uc*z!+(1z82@_auy)x0+9ppz3'
+#SECRET_KEY = '0#@yo_%tu!7rws4wixepzy@e&uc*z!+(1z82@_auy)x0+9ppz3'
 #SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
-DEBUG = True
+DEBUG = False
 #ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS")
 ALLOWED_HOSTS=['*']
 
 # Application definition
 
 INSTALLED_APPS = [
-    'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,7 +40,14 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'cloudinary',
 ]
+CLOUDINARY_URL="cloudinary://875546584995193:6Gl_H-gFVq_I2Nx3SKPqD0RF4Zk@drd1nudhu"
+cloudinary.config( 
+  cloud_name = "drd1nudhu", 
+  api_key = "875546584995193", 
+  api_secret = "6Gl_H-gFVq_I2Nx3SKPqD0RF4Zk" 
+)
 
 
 SITE_ID = 1
@@ -184,6 +192,8 @@ STATIC_ROOT = os.path.join(VENV_PATH,'static_root')
 MEDIA_ROOT = os.path.join(VENV_PATH,'media_root')
 #STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+# DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.RawMediaCloudinaryStorage'
+
 
 AUTHENTICATION_BACKENDS = [
 
