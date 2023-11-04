@@ -19,6 +19,7 @@ class PostView(models.Model):
 class Ad(models.Model):
     id = models.AutoField(primary_key=True)
     ad_img = CloudinaryField('image')
+    timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.id
