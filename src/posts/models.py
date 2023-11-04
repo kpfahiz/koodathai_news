@@ -18,6 +18,7 @@ class PostView(models.Model):
         return self.user.username
 class Ad(models.Model):
     id = models.AutoField(primary_key=True)
+    name=models.CharField(max_length=20)
     ad_img = CloudinaryField('image')
     timestamp = models.DateTimeField(auto_now_add=True)
     is_banner= models.BooleanField(default=True)

@@ -31,7 +31,7 @@ def get_category_count():
 def index(request):
     featured = Post.objects.filter(featured=True)
     latest = Post.objects.order_by('-timestamp')[0:3]
-    ads = Ad.objects.order_by('-timestamp')[0]
+    ads = Ad.objects.filter(is_banner=True)[0]
     #print(ads)
 
     if request.method == "POST":
