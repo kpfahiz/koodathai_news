@@ -15,7 +15,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = os.environ.get("DEBUG")
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS")
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -40,8 +39,8 @@ INSTALLED_APPS = [
 ]
 CLOUDINARY_URL=os.environ.get("CLOUDINARY_URL")
 cloudinary.config( 
-  cloud_name = os.environ.get("cloud_name")
-  api_key = os.environ.get("api_key")
+  cloud_name = os.environ.get("cloud_name"),
+  api_key = os.environ.get("api_key"),
   api_secret = os.environ.get("api_secret")
 )
 
