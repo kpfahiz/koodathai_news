@@ -1052,11 +1052,10 @@ section.gallery .overlay i {
 */
 footer.main-footer {
   background: #0e0e0e;
-  padding: 100px 0 0;
   color: #fff;
 }
 
-footer.main-footer .contact-details p {
+/* footer.main-footer .contact-details p {
   font-weight: 300;
   color: #fff;
   margin-bottom: 5px;
@@ -1066,7 +1065,7 @@ footer.main-footer .contact-details p {
 footer.main-footer .contact-details a {
   text-decoration: underline;
   margin-bottom: 0;
-}
+} */
 
 footer.main-footer a {
   color: inherit;
@@ -1085,7 +1084,7 @@ footer.main-footer ul {
 footer.main-footer .list-unstyled a {
   font-size: 0.95em;
 }
-
+/* 
 footer.main-footer .latest-posts .image {
   max-width: 50px;
   padding: 4px;
@@ -1096,9 +1095,9 @@ footer.main-footer .latest-posts .image {
 footer.main-footer .latest-posts a {
   font-size: 0.95em;
   text-decoration: none;
-}
+} */
 
-footer.main-footer .latest-posts a:hover {
+/* footer.main-footer .latest-posts a:hover {
   color: #fff;
 }
 
@@ -1109,7 +1108,7 @@ footer.main-footer .latest-posts strong {
 footer.main-footer .latest-posts .date {
   font-size: 0.85em;
   color: #aaa;
-}
+} */
 
 footer.main-footer .copyrights {
   background: #090909;

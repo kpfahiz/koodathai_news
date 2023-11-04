@@ -31,8 +31,9 @@ def get_category_count():
 def index(request):
     featured = Post.objects.filter(featured=True)
     latest = Post.objects.order_by('-timestamp')[0:3]
-    ads = Ad.objects.filter(is_banner=True)[0]
-    #print(ads)
+    ads = Ad.objects.filter(is_banner=True)
+    ads = ads.order_by('-timestamp')[0]
+
 
     if request.method == "POST":
         email = request.POST["email"]
@@ -52,6 +53,8 @@ def blog(request):
     most_recent = Post.objects.order_by('-timestamp')[:3]
     post_list = Post.objects.order_by('-timestamp')
     paginator = Paginator(post_list,4)
+    ads = Ad.objects.filter(is_banner=False)
+    ads= ads.order_by('-timestamp')[0]
     #page request variable
     page_request_var = 'page'
     page = request.GET.get(page_request_var)
@@ -66,6 +69,7 @@ def blog(request):
         'most_recent': most_recent,
         'page_request_var':page_request_var,
         'category_count': category_count,
+        'ads':ads,
     }
     return render(request,"blog.html",context)
 

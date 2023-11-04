@@ -18,13 +18,13 @@ class PostView(models.Model):
         return self.user.username
 class Ad(models.Model):
     id = models.AutoField(primary_key=True)
-    name=models.CharField(max_length=20)
+    img_name=models.CharField(max_length=20)
     ad_img = CloudinaryField('image')
     timestamp = models.DateTimeField(auto_now_add=True)
     is_banner= models.BooleanField(default=True)
 
     def __str__(self):
-        return self.name
+        return self.img_name
 
 class Comment(models.Model):
     id = models.AutoField(primary_key=True)
@@ -35,8 +35,7 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.user.username
-
-
+    
 
 
 class Author(models.Model):
