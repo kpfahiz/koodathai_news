@@ -40,8 +40,8 @@ INSTALLED_APPS = [
 ]
 CLOUDINARY_URL=os.environ.get("CLOUDINARY_URL")
 cloudinary.config( 
-  cloud_name = os.environ.get("cloud_name")
-  api_key = os.environ.get("api_key")
+  cloud_name = os.environ.get("cloud_name"),
+  api_key = os.environ.get("api_key"),
   api_secret = os.environ.get("api_secret")
 )
 
