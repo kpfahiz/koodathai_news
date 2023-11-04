@@ -20,9 +20,10 @@ class Ad(models.Model):
     id = models.AutoField(primary_key=True)
     ad_img = CloudinaryField('image')
     timestamp = models.DateTimeField(auto_now_add=True)
+    is_banner= models.BooleanField(default=True)
 
     def __str__(self):
-        return self.id
+        return self.ad_img
 
 class Comment(models.Model):
     id = models.AutoField(primary_key=True)
