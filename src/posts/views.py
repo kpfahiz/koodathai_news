@@ -1,6 +1,6 @@
 from django.core.paginator import Paginator,PageNotAnInteger,EmptyPage
 from django.shortcuts import render,get_object_or_404,redirect,reverse
-from .models import Post ,Author,PostView
+from .models import Post , Author, PostView, Ad
 from .forms import CommentForm, PostForm
 from  marketing.models import Signup
 from django.db.models import Count,Q
@@ -31,6 +31,7 @@ def get_category_count():
 def index(request):
     featured = Post.objects.filter(featured=True)
     latest = Post.objects.order_by('-timestamp')[0:3]
+    ads = Ad.objects.get('-timestamp')[0]
 
     if request.method == "POST":
         email = request.POST["email"]
@@ -40,6 +41,7 @@ def index(request):
     context = {
         'object_list':featured,
         'latest' : latest,
+        'ads': ads,
     }
     return render(request,"index.html",context)
 
