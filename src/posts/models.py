@@ -16,6 +16,9 @@ class PostView(models.Model):
 
     def __str__(self):
         return self.user.username
+class Ads(models.Model):
+    id = models.AutoField(primary_key=True)
+    ads_img = CloudinaryField('image')
 
 class Comment(models.Model):
     id = models.AutoField(primary_key=True)
