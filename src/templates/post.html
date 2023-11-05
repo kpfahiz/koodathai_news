@@ -53,8 +53,7 @@
                   var content = "{{ post.content | truncatechars:150 | safe}}";
                   var content = removeTags(content);
                   var content = content.replaceAll('&zwj;','')
-                  var share_content= "{{ post.title}}%0a"+overview+"%0a"+content+" Click below to read more...%0a https://koodathainews.onrender.com{{ post.get_absalute_url }}";
-                  share_content1= "{{ post.title}} "+content+" Click below to read more... https://koodathainews.onrender.com{{ post.get_absalute_url }}";
+                  var share_content= "*{{ post.title}}*%0a"+overview+"%0a"+content+" Click below to read more...%0a https://koodathainews.onrender.com{{ post.get_absalute_url }}";
                   a.href = "https://api.whatsapp.com/send?text="+share_content;
                 };
               </script>

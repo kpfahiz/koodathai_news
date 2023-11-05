@@ -67,7 +67,7 @@
                   var content = "{{ obj.content | truncatechars:150 | safe}}";
                   var content = removeTags(content);
                   var content = content.replaceAll('&zwj;','')
-                  var share_content= "{{ obj.title}}%0a"+overview+"%0a"+content+" Click below to read more...%0a https://koodathainews.onrender.com{{ obj.get_absalute_url }}";
+                  var share_content= "*{{ obj.title}}*%0a"+overview+"%0a"+content+" Click below to read more...%0a https://koodathainews.onrender.com{{ obj.get_absalute_url }}";
                   
                   a.href = "https://api.whatsapp.com/send?text="+share_content;
                 };
@@ -147,7 +147,32 @@
             <div class="post-details">
               <div class="post-meta d-flex justify-content-between">
                 <div class="date">{{ obj.timestamp }}</div>
-                <div class="whtap">{% load social_share %}{%  post_to_whatsapp obj.get_absalute_url "<i class='fa fa-whatsapp'></i>" %} </div>
+                <a id ='social_share_w1' onClick="social_share_w(this)" href=""  data-action="share/whatsapp/share" target="_blank" ><i class='fa fa-whatsapp'></i></a>
+              
+              <script type="text/javascript">
+                function removeTags(str) { 
+                  if ((str===null) || (str==='')) 
+                      return false; 
+                  else
+                      str = str.toString(); 
+                        
+                  // Regular expression to identify HTML tags in 
+                  // the input string. Replacing the identified 
+                  // HTML tag with a null string. 
+                  return str.replace( /(<([^>&]+)>)/ig, ''); 
+              } ;
+                function social_share_w(link){
+                  var a = document.getElementById('social_share_w1')
+                  var overview = "{{ obj.overview | safe}}";
+                  var overview = removeTags(overview);
+                  var content = "{{ obj.content | truncatechars:150 | safe}}";
+                  var content = removeTags(content);
+                  var content = content.replaceAll('&zwj;','')
+                  var share_content= "*{{ obj.title}}*%0a"+overview+"%0a"+content+" Click below to read more...%0a https://koodathainews.onrender.com{{ obj.get_absalute_url }}";
+                  
+                  a.href = "https://api.whatsapp.com/send?text="+share_content;
+                };
+              </script>
                 <div class="category">
                   {% for cat in obj.categories.all %}
                   <a href="#">{{ cat }}</a>
