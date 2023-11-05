@@ -16,13 +16,14 @@ def search(request):
     query = request.GET.get('q')
     if query:
         queryset = queryset.filter(
-            Q(title__icontains = query),
-            Q(overview__icontains = query),
+            Q(title__icontains = query)
         ).distinct()
+    print(queryset)
     context ={
         'queryset' : queryset
     }
     return render(request,'search_result.html',context)
+
 
 def get_category_count():
     queryset = Post.objects.values('categories__title').annotate(Count('categories__title'))
@@ -49,12 +50,20 @@ def index(request):
 
 
 def blog(request):
+    category = request.GET.get('category')
+    print('Cat',category)
+    if category == None:
+        post_list = Post.objects.order_by('-timestamp')
+    else:
+        post_list = Post.objects.filter(categories__title=category)
+
     category_count = get_category_count()
-    most_recent = Post.objects.order_by('-timestamp')[:3]
-    post_list = Post.objects.order_by('-timestamp')
+    
+    
     paginator = Paginator(post_list,4)
     ads = Ad.objects.filter(is_banner=False)
     ads= ads.order_by('-timestamp')[0]
+    most_recent = Post.objects.order_by('-timestamp')[:3]
     #page request variable
     page_request_var = 'page'
     page = request.GET.get(page_request_var)
