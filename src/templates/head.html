@@ -33,7 +33,7 @@
         <meta property="og:type" content="website" />
         <meta property="og:title" content="{{ i.title }}" />
         <meta property="og:description" content="{{ i.overview }}"/>
-        <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}/{{i.thumbnail.url }}"/>
+        <meta property="og:image" content="{{i.thumbnail.url }}"/>
         <meta property="og:image:alt" content="{{ i.title|default:''}}" />
         <link rel="canonical" href="current page url" />
         <meta property="og:site_name" content="Current page meta title or OG title" />
