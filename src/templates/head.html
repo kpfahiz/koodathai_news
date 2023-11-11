@@ -24,7 +24,21 @@
     <link rel="stylesheet" href="{% static '/css/custom.css' %}">
     <!-- Favicon-->
     <link rel="shortcut icon" href="{% static '/img/klogo1.png' %}">
-    <meta property="og:image" itemprop="image" content="{% static '/img/klogo1.png' %}" />
+    {% if seo %}
+        {% for i in seo %}
+        <title>{{ i.meta_title }}</title>
+        <meta name="description" content="{{ i.overview }}">
+        <meta name="keywords" content="{{ i.meta_keywords }}">
+        <meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{{ request.get_full_path }}" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="{{ i.title }}" />
+        <meta property="og:description" content="{{ i.overview }}"/>
+        <meta property="og:image" content="{{ request.get_host }}{{i.thumbnail.url }}"/>
+        <meta property="og:image:alt" content="{{ i.title|default:''}}" />
+        <link rel="canonical" href="current page url" />
+        <meta property="og:site_name" content="Current page meta title or OG title" />
+        {% endfor %}
+    {% endif %}
     {% comment %} <link href="{% static '/styles/github.css' %}" rel="stylesheet"> {% endcomment %}
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>

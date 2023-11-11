@@ -45,7 +45,6 @@ cloudinary.config(
   api_secret = os.environ.get("api_secret")
 )
 
-
 SITE_ID = 1
 
 
@@ -81,7 +80,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-
+                'posts.context_processors.seo'
             
             ],
         },
