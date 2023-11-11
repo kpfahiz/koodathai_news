@@ -46,7 +46,7 @@
                   <div class="title"><span>{{ obj.author.user }}</span></div></a>
                 <div class="date"><i class="icon-clock"></i> {{obj.timestamp |timesince}}</div>
                 <div class="comments meta-last"><i class="icon-comment"></i>{{ obj.comment_count }}</div>
-                <a id ='social_share_w22' onClick="social_share_w2(this)" href=""  data-action="share/whatsapp/share" target="_blank" ><i class='fa fa-whatsapp'></i></a>
+                <a id ='social_share_w22' onClick="social_share_w2(this)" href="https://api.whatsapp.com/send?text=**{{ obj.title}}*%0a {{ obj.overview | safe | striptags }} %0a {{ obj.content| safe | truncatechars:50 |striptags }} Click below to read more...%0a https://koodathainews.onrender.com{{ obj.get_absalute_url }}"   data-action="share/whatsapp/share" target="_blank" ><i class='fa fa-whatsapp'></i></a>
               
               <script type="text/javascript">
                 function removeTags(str) { 
@@ -67,9 +67,12 @@
                   var content = "{{ obj.content | truncatechars:150 | safe}}";
                   var content = removeTags(content);
                   var content = content.replaceAll('&zwj;','')
-                  var share_content= "*{{ obj.title}}*%0a"+overview+"%0a"+content+" Click below to read more...%0a https://koodathainews.onrender.com{{ obj.get_absalute_url }}";
-                  console.log(share_content);
-                  a.href = "https://api.whatsapp.com/send?text="+share_content;
+                  var share_content= "{{obj.thumbnail.url }}*{{ obj.title}}*%0a"+overview+"%0a"+content+" Click below to read more...%0a https://koodathainews.onrender.com{{ obj.get_absalute_url }}";
+                  console.log(overview)
+                  //a.href = "https://api.whatsapp.com/send?text="+share_content;
+                  var overview="";
+                  var content="";
+                  share_content="";
                 };
               </script>
              </footer>

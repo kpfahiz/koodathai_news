@@ -12,10 +12,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SECRET_KEY")
-DEBUG = os.environ.get("DEBUG")
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS")
+# SECRET_KEY = os.environ.get("SECRET_KEY")
+# DEBUG = os.environ.get("DEBUG")
+# ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS")
 # Application definition
+ALLOWED_HOSTS=['*']
+SECRET_KEY = '0#@yo_%tu!7rws4wixepzy@e&uc*z!+(1z82@_auy)x0+9ppz3'
+DEBUG = True
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -37,11 +40,17 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'cloudinary',
 ]
-CLOUDINARY_URL=os.environ.get("CLOUDINARY_URL")
+# CLOUDINARY_URL=os.environ.get("CLOUDINARY_URL")
+# cloudinary.config( 
+#   cloud_name = os.environ.get("cloud_name"),
+#   api_key = os.environ.get("api_key"),
+#   api_secret = os.environ.get("api_secret")
+# )
+CLOUDINARY_URL="cloudinary://875546584995193:6Gl_H-gFVq_I2Nx3SKPqD0RF4Zk@drd1nudhu"
 cloudinary.config( 
-  cloud_name = os.environ.get("cloud_name"),
-  api_key = os.environ.get("api_key"),
-  api_secret = os.environ.get("api_secret")
+  cloud_name = "drd1nudhu", 
+  api_key = "875546584995193", 
+  api_secret = "6Gl_H-gFVq_I2Nx3SKPqD0RF4Zk" 
 )
 
 SITE_ID = 1
