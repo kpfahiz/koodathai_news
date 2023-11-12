@@ -15,7 +15,7 @@
                 <div class="post-details">
                   <div class="post-meta d-flex justify-content-between">
                     <div class="date meta-last">{{post.timestamp }}</div>
-                    <a id ='social_share_w' onClick="social_share_w(this)" href="https://api.whatsapp.com/send?text=*{{ post.title}}*%0a {{ post.overview | safe | striptags }} %0a {{ post.content| safe | truncatechars:50 |striptags }} Click below to read more...%0a https://koodathainews.onrender.com{{ post.get_absalute_url }}"  data-action="share/whatsapp/share" target="_blank" ><i class='fa fa-whatsapp'></i></a>
+                    <a id ='social_share_w' href="https://api.whatsapp.com/send?text=*{{ post.title}}*%0a{{ post.content| safe | truncatechars:150 |striptags }} Click below to read more...%0a https://koodathainews.onrender.com{{ post.get_absalute_url }}"  data-action="share/whatsapp/share" target="_blank" ><i class='fa fa-whatsapp'></i></a>
               
                     <div class="category">
                       {% for cat in post.categories.all %}

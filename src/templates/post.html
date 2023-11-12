@@ -32,31 +32,7 @@
               <div class="date"><i class="icon-clock"></i>{{ post.timestamp|timesince }} ago</div>
               <div class="views"><i class="icon-eye"></i> {{ post.view_count }}</div>
               <div class="comments meta-last"><i class="icon-comment"></i>{{ post.comment_count }}</div>
-              <a id ='social_share_w' onClick="social_share_w(this)" href=""  data-action="share/whatsapp/share" target="_blank" ><i class='fa fa-whatsapp'></i></a>
-              
-              <script type="text/javascript">
-                function removeTags(str) { 
-                  if ((str===null) || (str==='')) 
-                      return false; 
-                  else
-                      str = str.toString(); 
-                        
-                  // Regular expression to identify HTML tags in 
-                  // the input string. Replacing the identified 
-                  // HTML tag with a null string. 
-                  return str.replace( /(<([^>&]+)>)/ig, ''); 
-              } ;
-                function social_share_w(link){
-                  var a = document.getElementById('social_share_w')
-                  var overview = "{{ post.overview | safe}}";
-                  var overview = removeTags(overview);
-                  var content = "{{ post.content | truncatechars:150 | safe}}";
-                  var content = removeTags(content);
-                  var content = content.replaceAll('&zwj;','')
-                  var share_content= "*{{ post.title}}*%0a"+overview+"%0a"+content+" Click below to read more...%0a https://koodathainews.onrender.com{{ post.get_absalute_url }}";
-                  a.href = "https://api.whatsapp.com/send?text="+share_content;
-                };
-              </script>
+              <a id ='social_share_w'  href="https://api.whatsapp.com/send?text=*{{ post.title}}*%0a{{ post.content| safe | truncatechars:150 |striptags }} Click below to read more...%0a https://koodathainews.onrender.com{{ post.get_absalute_url }}"  data-action="share/whatsapp/share" target="_blank" ><i class='fa fa-whatsapp'></i></a>
             </div>
           </div>
           <div class="post-body">
