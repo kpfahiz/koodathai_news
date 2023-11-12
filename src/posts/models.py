@@ -59,7 +59,7 @@ class Category(models.Model):
 class Post(models.Model):
     id = models.AutoField(primary_key=True)
     title =models.CharField(max_length=100)
-    overview = models.TextField()
+    overview = tinymce_models.HTMLField()
     content = tinymce_models.HTMLField()
     timestamp = models.DateTimeField(auto_now_add=True)
     #comment_count = models.IntegerField(default=0)

@@ -123,7 +123,7 @@
             <div class="post-details">
               <div class="post-meta d-flex justify-content-between">
                 <div class="date">{{ obj.timestamp }}</div>
-                <a id ='social_share_w1' onClick="social_share_w(this)" href="https://api.whatsapp.com/send?text=*{{ obj.title}}*%0a {{ obj.content| safe | truncatechars:150 |striptags }} Click below to read more...%0a https://koodathainews.onrender.com{{ obj.get_absalute_url }}"  data-action="share/whatsapp/share" target="_blank" ><i class='fa fa-whatsapp'></i></a>
+                <a id ='social_share_w1' href="https://api.whatsapp.com/send?text=*{{ obj.title}}*%0a {{ obj.content| safe | truncatechars:150 |striptags }} Click below to read more...%0a https://koodathainews.onrender.com{{ obj.get_absalute_url }}"  data-action="share/whatsapp/share" target="_blank" ><i class='fa fa-whatsapp'></i></a>
               
                 <div class="category">
                   {% for cat in obj.categories.all %}

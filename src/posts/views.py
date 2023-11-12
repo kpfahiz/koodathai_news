@@ -114,7 +114,6 @@ def post_create(request):
     form =PostForm(request.POST or None, request.FILES or None)
     author = get_author(request.user.id)
     #author = Author.objects.get(user__username=request.user)
-    print(author)
     if request.method =='POST':
         if form.is_valid():
             form.instance.author = author
