@@ -2,8 +2,6 @@ from django.db import models
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 from cloudinary.models import CloudinaryField
-#from tinymce import HTMLField
-from tinymce import models as tinymce_models
 from ckeditor.fields import RichTextField
 
 User =get_user_model()
