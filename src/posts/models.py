@@ -4,6 +4,7 @@ from django.urls import reverse
 from cloudinary.models import CloudinaryField
 #from tinymce import HTMLField
 from tinymce import models as tinymce_models
+from ckeditor.fields import RichTextField
 
 User =get_user_model()
 
@@ -59,8 +60,8 @@ class Category(models.Model):
 class Post(models.Model):
     id = models.AutoField(primary_key=True)
     title =models.CharField(max_length=100)
-    overview = tinymce_models.HTMLField()
-    content = tinymce_models.HTMLField()
+    overview = RichTextField()
+    content = RichTextField()
     timestamp = models.DateTimeField(auto_now_add=True)
     #comment_count = models.IntegerField(default=0)
     #view_count = models.IntegerField(default=0)

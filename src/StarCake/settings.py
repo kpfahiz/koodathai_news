@@ -12,11 +12,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SECRET_KEY")
-DEBUG = os.environ.get("DEBUG")
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS")
+# SECRET_KEY = os.environ.get("SECRET_KEY")
+# DEBUG = os.environ.get("DEBUG")
+# ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS")
 # Application definition
-
+ALLOWED_HOSTS=['*']
+SECRET_KEY = '0#@yo_%tu!7rws4wixepzy@e&uc*z!+(1z82@_auy)x0+9ppz3'
+DEBUG = True
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -29,6 +31,7 @@ INSTALLED_APPS = [
     'posts',
     'marketing',
     'tinymce',
+    'ckeditor',
     'crispy_forms',
     'crispy_bootstrap4',
     'django_social_share',
@@ -38,13 +41,18 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'cloudinary',
 ]
-CLOUDINARY_URL=os.environ.get("CLOUDINARY_URL")
+# CLOUDINARY_URL=os.environ.get("CLOUDINARY_URL")
+# cloudinary.config( 
+#   cloud_name = os.environ.get("cloud_name"),
+#   api_key = os.environ.get("api_key"),
+#   api_secret = os.environ.get("api_secret")
+# )
+CLOUDINARY_URL="cloudinary://875546584995193:6Gl_H-gFVq_I2Nx3SKPqD0RF4Zk@drd1nudhu"
 cloudinary.config( 
-  cloud_name = os.environ.get("cloud_name"),
-  api_key = os.environ.get("api_key"),
-  api_secret = os.environ.get("api_secret")
+  cloud_name = "drd1nudhu", 
+  api_key = "875546584995193", 
+  api_secret = "6Gl_H-gFVq_I2Nx3SKPqD0RF4Zk" 
 )
-
 
 SITE_ID = 1
 
@@ -219,4 +227,71 @@ TINYMCE_DEFAULT_CONFIG = {
     a11ycheck ltr rtl | showcomments addcomment code''',
     "custom_undo_redo_levels": 10,
     "language": "en",  # To force a specific language instead of the Django current language.
+}
+
+#CKEditor 
+CKEDITOR_BASEPATH =  '/static/ckeditor/ckeditor/'
+CKEDITOR_CONFIGS = {
+    'default': {
+        'skin': 'moono',
+        # 'skin': 'office2013',
+        'toolbar_Basic': [
+            ['Source', '-', 'Bold', 'Italic']
+        ],
+        'toolbar_YourCustomToolbarConfig': [
+            {'name': 'document', 'items': ['Source', '-', 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates']},
+            {'name': 'clipboard', 'items': ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo']},
+            {'name': 'editing', 'items': ['Find', 'Replace', '-', 'SelectAll']},
+            {'name': 'forms',
+             'items': ['Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton',
+                       'HiddenField']},
+            '/',
+            {'name': 'basicstyles',
+             'items': ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat']},
+            {'name': 'paragraph',
+             'items': ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-',
+                       'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl',
+                       'Language']},
+            {'name': 'links', 'items': ['Link', 'Unlink', 'Anchor']},
+            {'name': 'insert',
+             'items': ['Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe']},
+            '/',
+            {'name': 'styles', 'items': ['Styles', 'Format', 'Font', 'FontSize']},
+            {'name': 'colors', 'items': ['TextColor', 'BGColor']},
+            {'name': 'tools', 'items': ['Maximize', 'ShowBlocks']},
+            {'name': 'about', 'items': ['About']},
+            '/',  # put this to force next toolbar on new line
+            {'name': 'yourcustomtools', 'items': [
+                # put the name of your editor.ui.addButton here
+                'Preview',
+                'Maximize',
+
+            ]},
+        ],
+        'toolbar': 'YourCustomToolbarConfig',  # put selected toolbar config here
+        # 'toolbarGroups': [{ 'name': 'document', 'groups': [ 'mode', 'document', 'doctools' ] }],
+        # 'height': 291,
+        # 'width': '100%',
+        # 'filebrowserWindowHeight': 725,
+        # 'filebrowserWindowWidth': 940,
+        # 'toolbarCanCollapse': True,
+        # 'mathJaxLib': '//cdn.mathjax.org/mathjax/2.2-latest/MathJax.js?config=TeX-AMS_HTML',
+        'tabSpaces': 4,
+        'extraPlugins': ','.join([
+            'uploadimage', # the upload image feature
+            # your extra plugins here
+            'div',
+            'autolink',
+            'autoembed',
+            'embedsemantic',
+            'autogrow',
+            # 'devtools',
+            'widget',
+            'lineutils',
+            'clipboard',
+            'dialog',
+            'dialogui',
+            'elementspath'
+        ]),
+    }
 }

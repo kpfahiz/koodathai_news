@@ -2,6 +2,7 @@ from django import forms
 #from tinymce import TinyMCE
 from tinymce.widgets import TinyMCE
 from .models import Post,Comment
+from ckeditor.widgets import CKEditorWidget
 
 
 class TinyMCEWidget(TinyMCE):
@@ -10,16 +11,19 @@ class TinyMCEWidget(TinyMCE):
 
 
 class PostForm(forms.ModelForm):
-    overview = forms.CharField(
-        widget=TinyMCEWidget(
-            attrs={'required': False, 'cols': 30, 'rows': 10}
-        )
-    )
-    content = forms.CharField(
-        widget=TinyMCEWidget(
-            attrs={'required': False, 'cols': 30, 'rows': 10}
-        )
-    )
+    # overview = forms.CharField(
+    #     widget=TinyMCEWidget(
+    #         attrs={'required': True, 'cols': 30, 'rows': 10}
+    #     )
+    # )
+    # content = forms.CharField(
+    #     widget=TinyMCEWidget(
+    #         attrs={'required': True, 'cols': 30, 'rows': 10}
+    #     )
+    # )
+    overview= forms.CharField(widget=CKEditorWidget())
+    content = forms.CharField(widget=CKEditorWidget())
+
 
     class Meta:
         model = Post
