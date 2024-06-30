@@ -18,7 +18,6 @@ def search(request):
         queryset = queryset.filter(
             Q(title__icontains = query)
         ).distinct()
-    print(queryset)
     context ={
         'queryset' : queryset
     }
@@ -113,7 +112,8 @@ def post_create(request):
     title = "Create"
     form =PostForm(request.POST or None, request.FILES or None)
     author = get_author(request.user.id)
-    #author = Author.objects.get(user__username=request.user)
+    #print('--------->',author)
+    #author = Author.objects.get(user__username=request.user.id)
     if request.method =='POST':
         if form.is_valid():
             form.instance.author = author

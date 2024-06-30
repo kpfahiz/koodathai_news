@@ -14,10 +14,10 @@ urlpatterns = [
     path('post/<id>/update/',post_update,name='post_update'),
     path('post/<id>/delete/',post_delete,name='post_delete'),
     path('post/<id>/',post,name='post_details'),
-    path('tinymce/', include('tinymce.urls')),
+    #path('tinymce/', include('tinymce.urls')),
     path('contact/',contact,name='contact'),
     path('accounts/', include('allauth.urls')),
-    path('tinymce/', include('tinymce.urls')),
+    #path('tinymce/', include('tinymce.urls')),
 ]
 
 
